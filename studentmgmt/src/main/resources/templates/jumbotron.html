@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Jumbotron</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" crossorigin="anonymous" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-md-6 offset-md-3">
+            <div class="bg-primary text-white p-5 my-3">
+                <h1>Test Jumbotron</h1>
+                <p>Testing my first Jumbotron</p>
+            </div>
+        </div>
+    </div>
+</div>
+<style th:src="@{/jquery/jquery.min.js}"></style>
+<style th:src="@{/popper/popper.min.js}"></style>
+<style th:src="@{/bootstrap/js/bootstrap.min.js}"></style>
+</body>
+</html>

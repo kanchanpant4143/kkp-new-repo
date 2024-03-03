@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Jumbotron</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" crossorigin="anonymous" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+    <style>
+        #test span {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-md-4">
+
+            <div class="clearfix">
+                <div id="test">
+                    <span class="w-50 border border-5 border-primary rounded-pill"></span>
+                    <span class="border border-5 border-primary rounded-circle"></span>
+                </div>
+            </div>
+            <form action="#">
+                    <div class="row mb-3">
+                        <label class="form-check-label">Hobbies</label>
+                        <div class=""col>
+                            <div class="form-check">
+                                <input type="checkbox" value="Swimming" class="form-check-input">
+                                <label class="form-check-label">Swimming</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" value="Dancing" class="form-check-input">
+                                <label class="form-check-label">Dancing</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class=""col>
+                            <label class="form-check-label">Gender</label>
+                            <div class="form-check">
+                                <input type="radio" value="Male" name="gender" class="form-check-input">
+                                <label class="form-check-label">Male</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" value="Female" name="gender" class="form-check-input">
+                                <label class="form-check-label">Female</label>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="row mt-3">
+                    <div class=""col>
+                        <div class="input-group">
+                            <span class="input-group-text">Name</span>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<style th:src="@{/jquery/jquery.min.js}"></style>
+<style th:src="@{/popper/popper.min.js}"></style>
+<style th:src="@{/bootstrap/js/bootstrap.min.js}"></style>
+</body>
+</html>

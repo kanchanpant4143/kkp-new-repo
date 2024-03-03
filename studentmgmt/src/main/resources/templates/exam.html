@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head th:replace="@{/layout/head}::myhead">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section>
+    <div class="col-md-6 offset-md-3">
+        <h3 class="text-center">Add Employee</h3>
+        <div th:if="${session.message}" class="container mb-2">
+            <div th:classappend="${'alert-'+session.message.type}" class="alert text-center" role="alert">
+                <span th:text="${session.message.content}"></span>
+            </div>
+            <th:block th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                <a href="" th:href="@{/exam/list}" class="btn btn-primary">Show Exams</a>
+            </div>
+        </div>
+        <form th:action="@{/exam/save}" th:method="post" th:object="${exam}">
+            <div class="row">
+                <div class="col">
+                    <label for="examType" class="form-label">Exam Type</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="examType" class="form-control" th:field="*{examType}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="clazz" class="form-label">Class</label>
+                </div>
+                <div class="col">
+                    <select class="form-select" name="clazz" id="clazz" th:field="*{clazz}">
+                        <option value="">Select</option>
+                        <option th:each="c : ${classes}" th:value="${c.getValue()}" th:text="${c}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="subject" class="form-label">Subject</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="subject" class="form-control" th:field="*{subject}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="examDate" class="form-label">Exam Date</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="examDate" class="form-control" th:field="*{examDate}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="syllabus" class="form-label">Syllabus</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="syllabus" class="form-control" th:field="*{syllabus}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col offset-md-4">
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>
+</body>
+</html>

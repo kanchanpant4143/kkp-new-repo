@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head th:replace="@{/layout/head}::myhead">
+    <meta charset="UTF-8">
+    <title>School Management</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" crossorigin="anonymous" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section>
+<div class="container mt-3 offset-md-3">
+    <div class="row mb-2">
+        <div th:if="${session.message}" class="col-md-6">
+            <div th:classappend="${'alert-'+session.message.type}" class="alert text-center" role="alert">
+                <span th:text="${session.message.content}"></span>
+            </div>
+            <th:block th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+            <a href="" th:href="@{/student/list}" class="btn btn-primary">Show Students</a>
+        </div>
+    </div>
+    <form th:action="@{/student/save}" method="post" th:object="${student}">
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <p class="text-center fs-5 fw-bold">Register Student</p>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-2">
+                <label for="firstName" class="form-label">First Name</label>
+                <input id="firstName" type="text" class="form-control" th:field="*{firstName}">
+            </div>
+
+            <div class="col-md-2">
+                <label for="middleName" class="form-label">Middle Name</label>
+                <input id="middleName" type="text" class="form-control" th:field="*{middleName}">
+            </div>
+
+            <div class="col-md-2">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input id="lastName" type="text" class="form-control" th:field="*{lastName}">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input id="dob" type="date" class="form-control" th:field="*{dob}">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-3">
+                <label for="clazz" class="form-label">Class</label>
+                <select class="form-select" name="clazz" id="clazz" th:field="*{clazz}">
+                    <option value="">Select</option>
+                    <option th:each="c : ${classes}" th:value="${c.getValue()}" th:text="${c}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="section" class="form-label">Section</label>
+                <input id="section" type="text" class="form-control" th:field="*{section}">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-3">
+                <label for="fatherName" class="form-label">Father's Name</label>
+                <input id="fatherName" type="text" class="form-control" th:field="*{fatherName}">
+            </div>
+
+            <div class="col-md-3">
+                <label for="motherName" class="form-label">Mother's Name</label>
+                <input id="motherName" type="text" class="form-control" th:field="*{motherName}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+</section>
+<style th:src="@{/jquery/jquery.min.js}"></style>
+<style th:src="@{/popper/popper.min.js}"></style>
+<style th:src="@{/bootstrap/js/bootstrap.min.js}"></style>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="@{/layout/head}::myhead">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div th:replace="@{layout/smsnavbar}::mynavbar2"></div>
+    <section>
+        <div class="col-md-6 offset-md-3">
+            <form th:action="authenticate" th:method="post" th:object="${user}">
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="username" class="form-label">Login Name</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="username" class="form-control" th:field="*{username}" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="password" class="form-label">Password</label>
+                </div>
+                <div class="col">
+                    <input type="password" id="password" class="form-control" th:field="*{password}" />
+                </div>
+            </div>
+            <div class="row mt-2 mb-2">
+                <div class="col offset-md-4">
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </section>
+    <footer class="mt-auto" th:replace="@{layout/footer}::footer1"></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>School Management</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" crossorigin="anonymous" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body class="my-1">
+<div class="container">
+<div th:replace="@{layout/smsnavbar}::mynavbar"></div>
+<div class="container my-1">
+    <div class="row mb-1">
+        <div class="col bg-dark">
+            <h2 class="text-light text-center fw-bold">Admin Dashboard</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 bg-primary">
+            <nav class="navbar bg-dark navbar-dark p-2">
+                <div class="container-fluid">
+                    <ul class="navbar-nav">
+                        <li th:each="lnk:${userLinks}" class="nav-item"><a th:href="@{${lnk.link}}" th:text="${lnk.label}" class="nav-link"></a></li>
+
+                        <!--<li class="nav-item"><a th:href="@{/employee/add}" class="nav-link">Register Employee</a></li>
+                        <li class="nav-item"><a th:href="@{/employee/list}" class="nav-link">Employees List</a></li>
+                        <li class="nav-item"><a th:href="@{/student/add}" class="nav-link">Register Student</a></li>
+                        <li class="nav-item"><a th:href="@{/student/list}" class="nav-link">Students List</a></li>
+                        <li class="nav-item"><a th:href="@{/message/principal/add}" class="nav-link">Add Message</a></li>-->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-7 bg-light">Content</div>
+        <div class="col-md-3 bg-info">
+            <div class="row">
+            <div class="card my-1 h-40">
+                <div class="card-header">
+                    <p class="text-center fs-5 fw-bold">Principal's Message</p>
+                </div>
+                <div class="card-body overflow-auto">
+                    <p class="card-text">Welcome to our school for session 2023 Welcome to our school for session 2023 Welcome to our school for session 2023
+                        Welcome to our school for session 2023 Welcome to our school for session 2023 Welcome to our school for session 2023</p>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="card my-1 h-40">
+                    <div class="card-header">
+                        <p class="text-center fs-5 fw-bold">Upcoming Events</p>
+                    </div>
+                    <div class="card-body overflow-auto">
+                        <ul>
+                            <li><p class="text-start">Founder's Day <a href="#" class="text-primary">Read more>></a></p></li>
+                            <li><p class="text-start">Independence Day <a href="#" class="text-primary">Read more>></a></p></li>
+                            <li><p class="text-start">Republic Day <a href="#" class="text-primary">Read more>></a></p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="@{layout/footer}::footer1"></footer>
+</div>
+<style th:src="@{/jquery/jquery.min.js}"></style>
+<style th:src="@{/popper/popper.min.js}"></style>
+<style th:src="@{/bootstrap/js/bootstrap.min.js}"></style>
+</body>
+</html>

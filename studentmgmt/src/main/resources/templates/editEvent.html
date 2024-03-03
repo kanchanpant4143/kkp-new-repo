@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>School Management</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" crossorigin="anonymous" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section>
+    <div class="container offset-md-3 mt-3">
+        <div class="row mb-2">
+            <div class="col">
+                <a href="" th:href="@{/event/list}" class="btn btn-primary">Show Events</a>
+            </div>
+        </div>
+        <form action="#" th:action="@{/event/update}" method="post" th:object="${event}">
+            <input id="id" type="hidden" th:field="*{id}">
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <p class="text-center fs-5 fw-bold">Edit Event</p>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <label for="eventHeading" class="form-label">Event Heading</label>
+                    <input id="eventHeading" type="text" class="form-control" th:field="*{eventHeading}">
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <label for="eventDate" class="form-label">Event Date</label>
+                    <input id="eventDate" type="date" class="form-control" th:field="*{eventDateTime}">
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <label for="briefDesc" class="form-label">Brief Description</label>
+                    <input id="briefDesc" type="text" class="form-control" th:field="*{briefDescription}">
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <label for="description" class="form-label">Description</label>
+                    <input id="description" type="text" class="form-control" th:field="*{description}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<style th:src="@{/jquery/jquery.min.js}"></style>
+<style th:src="@{/popper/popper.min.js}"></style>
+<style th:src="@{/bootstrap/js/bootstrap.min.js}"></style>
+</body>
+</html>

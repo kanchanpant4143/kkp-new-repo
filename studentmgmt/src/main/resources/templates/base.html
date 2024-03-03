@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head th:replace="@{/layout/head}::myhead">
+    <meta charset="UTF-8">
+    <title>School Management</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" crossorigin="anonymous" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+<!--<header th:replace="@{layout/header}::header1"></header>-->
+<div th:replace="@{layout/smsnavbar}::mynavbar"></div>
+
+    <div class="row mb-2">
+        <div th:replace="${content}"></div>
+    </div>
+
+<footer class="mt-auto" th:replace="@{layout/footer}::footer1"></footer>
+</div>
+<style th:src="@{/jquery/jquery.min.js}"></style>
+<style th:src="@{/popper/popper.min.js}"></style>
+<style th:src="@{/bootstrap/js/bootstrap.min.js}"></style>
+</body>
+</html>

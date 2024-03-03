@@ -1,0 +1,45 @@
+package com.ssis.redis.controller;
+
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ssis.redis.entity.Product;
+import com.ssis.redis.repo.ProductDao;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin
+public class ProductController {
+
+	@Autowired
+	ProductDao productDao;
+	
+	@GetMapping("/")
+	public ResponseEntity<String> getAllProducts() {		
+		return ResponseEntity.ok("Welcome");
+	}
+
+	@PostMapping("/product")
+	public ResponseEntity<Product> save(@RequestBody Product product) {
+		Product p = productDao.save(product);
+		return ResponseEntity.ok(p);
+	}
+
+	@GetMapping("/product")
+	public ResponseEntity<List<Product>> getAllProducts() {
+		List<Object> findAll = productDao.findAll();
+		List<Product> products = findAll.stream().map(p -> (Product) p).collect(Collectors.toList());
+		return ResponseEntity.ok(products);
+	}
+
+}

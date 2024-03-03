@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container mt-2">
+        <div class="row mb-2">
+            <div class="col">
+                <a href="" th:href="@{/exam/add}" class="btn btn-primary">Add Exam</a>
+            </div>
+        </div>
+    <table class="table table-striped bg-light">
+        <thead>
+            <tr>
+                <th>SNo.</th>
+                <th>Exam Type</th>
+                <th>Exam Date</th>
+                <th>Class</th>
+                <th>Subject</th>
+                <th>Syllabus</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="e,status : ${exams}">
+                <td th:text="${status.index+1}"></td>
+                <td th:text="${e.examType}"></td>
+                <td th:text="${e.examDate}"></td>
+                <td th:text="${e.clazz}"></td>
+                <td th:text="${e.subject}"></td>
+                <td th:text="${e.syllabus}"></td>
+                <td><span><a th:href="@{/exam/select/{id}(id=${e.id})}" class="btn btn-primary">Edit</a></span>
+                    <span> | </span>
+                    <span><a th:href="@{/exam/delete/{id}(id=${e.id})}" class="btn btn-danger">Delete</a></span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</section>
+</body>
+</html>

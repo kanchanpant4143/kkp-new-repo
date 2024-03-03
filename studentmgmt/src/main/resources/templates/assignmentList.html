@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container mt-2">
+        <div class="row mb-2">
+            <div class="col">
+                <a href="" th:href="@{/assignment/add}" class="btn btn-primary">Add Assignment</a>
+            </div>
+        </div>
+    <table class="table table-striped bg-light">
+        <thead>
+            <tr>
+                <th>SNo.</th>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Subject</th>
+                <th>Teacher</th>
+                <th>Description</th>
+                <th>Assigned Date</th>
+                <th>Completion Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="a,status : ${assignments}">
+                <td th:text="${status.index+1}"></td>
+                <td th:text="${a.clazz}"></td>
+                <td th:text="${a.section}"></td>
+                <td th:text="${a.subject}"></td>
+                <td th:text="${a.teacher}"></td>
+                <td th:text="${a.description}"></td>
+                <td th:text="${a.assignedDate}"></td>
+                <td th:text="${a.completionDate}"></td>
+                <td><span><a th:href="@{/assignment/select/{id}(id=${a.id})}" class="btn btn-primary">Edit</a></span>
+                    <span> | </span>
+                    <span><a th:href="@{/assignment/delete/{id}(id=${a.id})}" class="btn btn-danger">Delete</a></span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</section>
+</body>
+</html>

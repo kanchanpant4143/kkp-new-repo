@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head th:replace="@{/layout/head}::myhead">
+    <meta charset="UTF-8">
+    <title>School Management</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" crossorigin="anonymous" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section>
+    <form action="#" method="post">
+        <div class="container mt-2">
+        <div class="row mb-2">
+            <div class="col">
+                <a href="" th:href="@{/student/add}" class="btn btn-primary">Add Student</a>
+            </div>
+        </div>
+        <table class="table table-striped bg-light">
+            <thead>
+            <tr>
+                <th>SNo.</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Father's Name</th>
+                <th>Mother's Name</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="s,status : ${students}">
+                <td th:text="${status.index+1}"></td>
+                <td th:text="${s.firstName}+' '+${s.middleName}+' '+${s.lastName}"></td>
+                <td th:text="${s.dob}"></td>
+                <td th:text="${s.clazz}"></td>
+                <td th:text="${s.section}"></td>
+                <td th:text="${s.fatherName}"></td>
+                <td th:text="${s.motherName}"></td>
+                <td><span><a th:href="@{/student/select/{id}(id=${s.id})}" class="btn btn-primary">Edit</a></span>
+                    <span> | </span>
+                    <span><a th:href="@{/student/delete/{id}(id=${s.id})}" class="btn btn-danger">Delete</a></span></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </form>
+</section>
+    <style th:src="@{/jquery/jquery.min.js}"></style>
+    <style th:src="@{/popper/popper.min.js}"></style>
+    <style th:src="@{/bootstrap/js/bootstrap.min.js}"></style>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head th:replace="@{/layout/head}::myhead">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section>
+    <div class="col-md-6 offset-md-3">
+        <h3 class="text-center">Add Employee</h3>
+        <div th:if="${session.message}" class="container mb-2">
+            <div th:classappend="${'alert-'+session.message.type}" class="alert text-center" role="alert">
+                <span th:text="${session.message.content}"></span>
+            </div>
+            <th:block th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                <a href="" th:href="@{/employee/list}" class="btn btn-primary">Show Employees</a>
+            </div>
+        </div>
+        <form th:action="@{/employee/save}" th:method="post" th:object="${employee}">
+            <div class="row">
+                <div class="col">
+                    <label for="empName" class="form-label">Name</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="empName" class="form-control" th:field="*{empName}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                </div>
+                <div class="col">
+                    <input type="date" id="dob" class="form-control" th:field="*{dob}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="designation" class="form-label">Designation</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="designation" class="form-control" th:field="*{designation}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="address" class="form-label">Address</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="address" class="form-control" th:field="*{address}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="mobileNo" class="form-label">Mobile No</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="mobileNo" class="form-control" th:field="*{mobileNo}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="aadharNo" class="form-label">Aadhar No</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="aadharNo" class="form-control" th:field="*{aadharNo}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="contactName" class="form-label">Emergency Contact Name</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="contactName" class="form-control" th:field="*{contactName}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="contactNo" class="form-label">Emergency Contact No</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="contactNo" class="form-control" th:field="*{contactNo}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col offset-md-4">
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>
+</body>
+</html>

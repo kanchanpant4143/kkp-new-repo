@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head th:replace="@{/layout/head}::myhead">
+    <meta charset="UTF-8">
+    <title>School Management</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" crossorigin="anonymous" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section>
+<form action="#" method="post">
+    <div class="container mt-2">
+        <div class="row mb-2">
+            <div class="col">
+                <a href="" th:href="@{/employee/add}" class="btn btn-primary">Add Employee</a>
+            </div>
+        </div>
+        <table class="table table-striped bg-light">
+            <thead>
+            <tr>
+                <th>SNo.</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Designation</th>
+                <th>Address</th>
+                <th>Mobile No.</th>
+                <th>Aadhar No.</th>
+                <th>Emergency Contact Name</th>
+                <th>Emergency Contact No.</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="e,status : ${employees}">
+                <td th:text="${status.index+1}"></td>
+                <td th:text="${e.empName}"></td>
+                <td th:text="${e.dob}"></td>
+                <td th:text="${e.designation}"></td>
+                <td th:text="${e.address}"></td>
+                <td th:text="${e.mobileNo}"></td>
+                <td th:text="${e.aadharNo}"></td>
+                <td th:text="${e.contactName}"></td>
+                <td th:text="${e.contactNo}"></td>
+                <td><span><a th:href="@{/employee/select/{id}(id=${e.id})}" class="btn btn-primary">Edit</a></span>
+                    <span> | </span>
+                    <span><a th:href="@{/employee/delete/{id}(id=${e.id})}" class="btn btn-danger">Delete</a></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+</section>
+<style th:src="@{/jquery/jquery.min.js}"></style>
+<style th:src="@{/popper/popper.min.js}"></style>
+<style th:src="@{/bootstrap/js/bootstrap.min.js}"></style>
+</body>
+</html>
